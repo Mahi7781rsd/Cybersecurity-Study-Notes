@@ -4,7 +4,7 @@ Penetration Testing (Pentesting) is a **controlled hacking test** to find weakne
 
 <br>
 
-# 🔍 Why is Pentesting Important?
+# Why is Pentesting Important? 
 
 - Finds security problems before hackers do.
   
@@ -13,4 +13,18 @@ Penetration Testing (Pentesting) is a **controlled hacking test** to find weakne
 - Makes systems stronger against real cyberattacks.
 
 - Lowers the risk of data leaks and money loss.
+
+<br>
+
+# Tasks in Penetration Testing
+
+Penetration testing includes various tasks, such as:
+
+- **Reconnaissance** – Gathering information about the target.
+  
+- **Vulnerability Assessment** – Identifying weaknesses in systems.  
+- **Exploitation** – Attempting to break into the system using found vulnerabilities.  
+- **Post-exploitation** – Assessing the impact of the breach and maintaining access.  
+- **Reporting** – Documenting findings and suggesting fixes.  
+
 
