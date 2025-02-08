@@ -117,3 +117,8 @@ Provides **basic information** about shell commands.
 **Example:**  
 ```bash
 help cd
+```
+
+
+> **Note:** This document is a work in progress and will be updated with more details soon. Stay tuned!
+
