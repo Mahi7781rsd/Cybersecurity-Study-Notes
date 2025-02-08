@@ -27,4 +27,5 @@ Penetration testing includes various tasks, such as:
 - **Post-exploitation** – Assessing the impact of the breach and maintaining access.  
 - **Reporting** – Documenting findings and suggesting fixes.  
 
+> **Note:** This document is a work in progress and will be updated with more details soon. Stay tuned!
 
