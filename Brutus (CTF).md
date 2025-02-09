@@ -162,5 +162,18 @@ One of the common persistence techniques used by attackers is creating new user 
 >In our case, after the attacker added the user `cyberjunkie`, it would be classified under **T1136.001**.
 
 ---
+### Task 7: What time did the attacker's first SSH session end according to auth.log?
 
+According to the **auth.log**, the attacker SSH’ed into the box at **6:32:45**. Now, to find the timestamp when that SSH session was terminated, I used the following command:
 
+```bash
+grep -i "session 37 logged out" auth.log
+```
+***output***
+
+```bash
+Mar  6 06:37:24 ip-172-31-35-28 systemd-logind[411]: Session 37 logged out. Waiting for processes to exit.
+```
+
+>Here, we can see that SSH session 37 was closed at 6:37:24, so ***2024-03-06 06:37:24***
+---
