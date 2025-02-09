@@ -67,6 +67,7 @@ In your CTF challenge, you might be asked to:
 Now that we have a basic understanding of what logs are, and what `auth.log` and `wtmp` are, you can begin analyzing your logs with these tools and concepts in mind. Good luck with your CTF challenge!
 
 ---
+
 ### **Task 1: Find the IP Address Used by the Attacker for Brute Force Attack**
 
 In a brute force attack, an attacker typically tries many failed login attempts, usually for the same user account, from the same IP address.
@@ -90,6 +91,7 @@ grep "Accepted password" /path/to/auth.log
 
 ```
 ---
+
 ### Task 3: Identify the Timestamp When the Attacker Manually Logged in to the Server
 
 The first logon to the root account was done via automated brute forcing. Continuing to scroll through the `auth.log`, we find that the attacker manually logs in as the root user and starts adding a new user and group on the box named **cyberjunkie**.
@@ -101,7 +103,39 @@ You can use the following command to dump the contents of the `wtmp` file:
 ```bash
 utmpdump wtmp
 ````
-> It looks like the logged timestamp of the manual login by the attacker is 2024–03–06 06:32:45.
+>It looks like the logged timestamp of the manual login by the attacker is 2024–03–06 06:32:45.
 
+---
 
+### **Task 4: Find the Session Number Assigned to the Attacker's SSH Session**
 
+SSH login sessions are tracked and assigned a session number upon login. To find the session number assigned to the attacker's session for the user account (identified in Task 2), we can use the following steps.
+
+**Find Session Information**: Use the `grep` command to search for the session information in the `auth.log` file:
+
+```bash
+grep "session" auth.log
+```
+***output***
+```bash
+Mar  6 06:32:44 ip-172-31-35-28 systemd-logind[411]: New session 37 of user root.
+```
+>This session number (e.g., 37) matches the login time identified in the previous task, confirming the attacker's session.
+
+---
+
+### **Task 5: The Attacker Added a New User with Higher Privileges**
+
+The attacker added a new user as part of their persistence strategy on the server and gave this new user account higher privileges. To identify the name of this account, we can search for the `useradd` command in the `auth.log`.
+
+**Search for User Creation Events**: Use the `grep` command to search for `useradd` in the `auth.log`.
+
+```bash
+grep -i "useradd" auth.log
+```
+```bash
+Mar  6 06:34:18 ip-172-31-35-28 useradd[2592]: new user: name=cyberjunkie, UID=1002, GID=1002, home=/home/cyberjunkie, shell=/bin/bash, from=/dev/pts/1
+```
+>This confirms that the attacker created a new user account named cyberjunkie
+
+---
