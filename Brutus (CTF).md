@@ -139,3 +139,28 @@ Mar  6 06:34:18 ip-172-31-35-28 useradd[2592]: new user: name=cyberjunkie, UID=1
 >This confirms that the attacker created a new user account named cyberjunkie
 
 ---
+
+### Task 6: MITRE ATT&CK Sub-technique for Persistence via Account Creation
+
+#### MITRE ATT&CK and Persistence via Account Creation
+
+##### What is MITRE ATT&CK?
+The MITRE ATT&CK framework is a comprehensive knowledge base of adversary tactics, techniques, and procedures (TTPs) used in cybersecurity attacks. It provides a detailed and standardized classification of how attackers operate during different phases of an attack. This framework helps organizations understand how attackers may exploit their systems and how to detect, respond, and mitigate such activities.
+
+##### What is Persistence?
+Persistence refers to techniques used by attackers to maintain access to a system or network even after the initial attack vector has been closed or detected. This is critical for attackers to ensure they can continue their operations without needing to repeatedly exploit vulnerabilities.
+
+##### Sub-technique for Persistence: T1136.001
+One of the common persistence techniques used by attackers is creating new user accounts on the compromised system. This allows the attacker to maintain access even if the original attack vector is closed.
+
+- **T1136: Create Account**  
+    - This technique involves creating a new account on the system to maintain access.
+  
+- **T1136.001: Local Account**  
+    - The **.001** sub-technique specifically refers to the creation of a local user account. This is when an attacker adds a new user to the local system to ensure they can log in, even if other methods (like backdoors) are detected and removed.
+
+>In our case, after the attacker added the user `cyberjunkie`, it would be classified under **T1136.001**.
+
+---
+
+
