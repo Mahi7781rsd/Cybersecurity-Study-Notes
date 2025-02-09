@@ -90,5 +90,18 @@ grep "Accepted password" /path/to/auth.log
 
 ```
 ---
+### Task 3: Identify the Timestamp When the Attacker Manually Logged in to the Server
+
+The first logon to the root account was done via automated brute forcing. Continuing to scroll through the `auth.log`, we find that the attacker manually logs in as the root user and starts adding a new user and group on the box named **cyberjunkie**.
+
+To confirm this, you can check the `wtmp` file, which contains records of user logins, logouts, system reboots, and other related events. 
+
+You can use the following command to dump the contents of the `wtmp` file:
+
+```bash
+utmpdump wtmp
+````
+> It looks like the logged timestamp of the manual login by the attacker is 2024–03–06 06:32:45.
+
 
 
