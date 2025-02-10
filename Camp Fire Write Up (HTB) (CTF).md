@@ -72,5 +72,22 @@ sequenceDiagram
 
 ---
 
-This guide provides a professional and structured overview of **Kerberos** and **Kerberoasting**, helping you understand authentication and security risks in Windows networks.
+## Domain Controller and Workstation Log
 
+### What is a Domain Controller?
+A **Domain Controller (DC)** is a server in a Windows Active Directory network responsible for **authenticating and authorizing** users and computers. It handles:
+- **User Authentication** – Validates login credentials.
+- **Group Policies** – Enforces security policies across the domain.
+- **Kerberos Ticket Distribution** – Issues TGTs and Service Tickets.
+- **Centralized Management** – Controls user accounts and resources.
+
+### What is a Workstation Log?
+A **Workstation Log** contains records of user activities, logins, and system events on an individual computer (workstation). These logs help in:
+- **Monitoring Login Activity** – Tracking user sessions.
+- **Detecting Anomalies** – Identifying suspicious activities.
+- **Incident Investigation** – Providing forensic data for security audits.
+- **Troubleshooting** – Diagnosing authentication or system errors.
+
+---
+
+This guide provides a professional and structured overview of **Kerberos**, **Kerberoasting**, **Domain Controllers**, and **Workstation Logs**, helping you understand authentication and security risks in Windows networks.
