@@ -1,1 +1,76 @@
+# Kerberos and Kerberoasting Explained
+
+## What is Kerberos?
+Kerberos is an authentication protocol used in Windows networks to verify user identities securely. Instead of requiring a password every time, Kerberos uses **tickets** to allow users to access services.
+
+---
+
+## How Kerberos Works
+
+1. **User Login** – The user enters their username and password.
+2. **Ticket Granting Ticket (TGT) Issued** – If credentials are correct, the Authentication Server (**AS**) provides a **TGT**.
+3. **Request for a Service Ticket** – When the user wants to access a service, they use the **TGT** to request a **Service Ticket**.
+4. **Service Ticket Issued** – The Ticket Granting Server (**TGS**) provides a **Service Ticket** encrypted with the service’s password.
+5. **Accessing the Service** – The user presents the **Service Ticket** to the application or server, which verifies it and grants access.
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant AS
+    participant TGS
+    participant Service
+
+    User->>AS: Login Request (Username, Password)
+    AS->>User: Ticket Granting Ticket (TGT)
+    User->>TGS: Request Service Ticket (Using TGT)
+    TGS->>User: Service Ticket (Encrypted with Service Password)
+    User->>Service: Access Service (Using Service Ticket)
+    Service->>User: Access Granted
+```
+
+---
+
+## Types of Tickets in Kerberos
+
+### Ticket Granting Ticket (TGT)
+A master ticket issued when the user logs in, used to request access to other services.
+
+### Service Ticket
+A ticket issued when a user requests access to a specific service, encrypted with the service’s password.
+
+---
+
+## What is Kerberoasting?
+Kerberoasting is an attack technique where an attacker extracts **Service Tickets** from Kerberos and attempts to crack them offline to retrieve service account passwords.
+
+### How Kerberoasting Works:
+1. The attacker requests a **Service Ticket** for a **targeted service**.
+2. The **TGS** provides the **Service Ticket**, which is encrypted with the **service account’s password hash**.
+3. The attacker extracts the **Service Ticket** and attempts to **crack** it offline using tools like **Hashcat** or **John the Ripper**.
+4. If successful, the attacker obtains the **plaintext password** of the service account.
+
+```mermaid
+sequenceDiagram
+    participant Attacker
+    participant TGS
+    participant Service
+    
+    Attacker->>TGS: Request Service Ticket (Target Service)
+    TGS->>Attacker: Service Ticket (Encrypted with Service Account Password Hash)
+    Attacker->>Attacker: Extract & Crack Ticket (Offline Attack)
+    Attacker->>Service: Use Cracked Credentials for Lateral Movement
+```
+
+---
+
+## Preventing Kerberoasting
+- **Use Strong Service Account Passwords** (Long, complex, and rotated frequently)
+- **Use Managed Service Accounts (MSAs) or Group Managed Service Accounts (gMSAs)**
+- **Restrict Service Account Privileges** (Least privilege principle)
+- **Monitor & Detect Unusual Kerberos Ticket Requests**
+- **Enable AES Encryption for Kerberos** instead of weaker encryption like RC4
+
+---
+
+This guide provides a professional and structured overview of **Kerberos** and **Kerberoasting**, helping you understand authentication and security risks in Windows networks.
 
