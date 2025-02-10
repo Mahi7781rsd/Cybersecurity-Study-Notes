@@ -90,4 +90,19 @@ A **Workstation Log** contains records of user activities, logins, and system ev
 
 ---
 
-This guide provides a professional and structured overview of **Kerberos**, **Kerberoasting**, **Domain Controllers**, and **Workstation Logs**, helping you understand authentication and security risks in Windows networks.
+## CTF Investigation Plan
+Since we have logs from both the **Domain Controller (DC)** and the **Workstation**, our goal is to analyze them and confirm if a **Kerberoasting attack** has occurred.
+
+### Step 1: Extract the ZIP File
+Since the **ZIP file** is password-protected, use the following command to extract it:
+
+#### Linux & Windows:
+```bash
+7z x filename.zip -p"hacktheblue" -ooutput_folder
+```
+
+If the **password** is unknown, tools like **John the Ripper** or **7z2john** can be used to perform a brute-force attack to recover the password.
+
+---
+
+This guide provides a professional and structured overview of **Kerberos**, **Kerberoasting**, **Domain Controllers**, **Workstation Logs**, and an **investigation plan for CTF challenges**, helping you understand authentication and security risks in Windows networks.
